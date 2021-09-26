@@ -41,6 +41,10 @@ function displayMovie(movieDetails){
     actors.textContent = "Actors - " + movieDetails.Actors;
     rating.textContent = "IMDB Rating - " + movieDetails.imdbRating; 
 
+    if ( movieDetails.imdbRating > 8.5 ){
+        displayRecommended(container)
+    } 
+
     header.append( title, releaseYear )
     info.append( header, description, genre, actors, director, rating)
     movie.append( poster, info );
@@ -77,6 +81,15 @@ function setSpinner(isLoading){
     }
 }
 
+function displayRecommended(target){
+    const div = document.createElement('div');
+
+    div.id = "recommended";
+
+    div.textContent = "Recommended"
+
+    target.append(div);
+}
 
 async function handleSearch(e){
     try {

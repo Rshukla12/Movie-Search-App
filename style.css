@@ -88,3 +88,14 @@ input[type="button"]:hover{
 .visible {
     display: block;
 }
+#recommended{
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    right: 28.9%;
+    top: 30.75%;
+    padding: 6px;
+    background-color: gold;
+    border-top-right-radius: 10px;
+
+}
