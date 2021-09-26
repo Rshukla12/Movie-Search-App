@@ -10,13 +10,36 @@ function fetchMovieDetails(movieName){
         });
 }
 
-async function handleSearch(e){
+function displayMovie(movieDetails){
+    const container = document.getElementById("movie")
+
+    container.innerHTML = null;
+
+    const title = document.createElement('h1');
+    const releaseDate = document.createElement('h3');
+    const description = document.createElement('p');
+
+    title.textContent = movieDetails.Title;
+    releaseDate.textContent = movieDetails.Released;
+    description.textContent = movieDetails.Plot;
+
+    container.append(title, releaseDate, description);
+}
+
+
+function handleSearch(e){
     e.preventDefault();
     const searchQuery = document.getElementById("name");
     const query = searchQuery.value;
     
-    const movieDetails = await fetchMovieDetails(query);
-    console.log(movieDetails)
+    fetchMovieDetails(query)
+    .then( ( movieDetails ) => {
+        console.log(movieDetails);
+        displayMovie(movieDetails);
+    })
+    .catch( (err) => {
+        console.log(err);
+    })
 
 }
 
