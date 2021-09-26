@@ -65,8 +65,12 @@ function validateInput(text){
 }
 
 function setSpinner(isLoading){
+    
     const spinner = document.getElementById("spinner");
     if ( isLoading ){
+        const container = document.getElementById("movie");
+        container.innerHTML = null;
+
         spinner.className = "visible";
     } else {
         spinner.className = "hidden";
@@ -82,6 +86,8 @@ async function handleSearch(e){
         const query = searchQuery.value;
         
         if ( !validateInput(query) ){
+            
+            setSpinner(false);
             alert('Please enter the exact movie name')
             return;
         }
