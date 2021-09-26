@@ -93,12 +93,13 @@ async function handleSearch(e){
             console.log(movieResult)
             displayNotFound();
         }
+        
+        setSpinner(false);
 
         searchQuery.value = "";
     } catch(err) {
         console.log(err);
     }
-    setSpinner(false);
 }
 
 window.addEventListener("load", ( ) => {
